@@ -1,0 +1,23 @@
+<p>getapi works!</p>
+<div class = "row">
+  <div class = "col-6">
+    <table class = "table table-bordered">
+      <thead>
+        <tr>
+          <th>User id</th>
+          <th>role</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of dataList; track $index) {
+          <tr>
+            <td>{{item.userId}}</td>
+            <td>{{item.role}}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+
+  </div>
+
+</div>

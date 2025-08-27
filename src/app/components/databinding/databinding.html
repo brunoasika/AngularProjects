@@ -1,0 +1,15 @@
+<p>databinding works!</p>
+<!-- interpolation -->
+<p>{{name}} {{age}}</p> 
+
+<!-- Property binding -->
+<input [type]="inputType">
+<input type="text" [max] = "maxLength" [min] = "minchar">
+<p [class] = "coloroftext">i am a youth</p>
+
+<!-- Event binding -->
+<p> <button (click) = "showMessage()"> reveal message </button> </p>
+<p> <button (click) = "changecolor()"> Change Color </button> </p>
+
+<!-- Two way (using ngModel)-->
+ <input type="text" [(ngModel)] = "name"> 

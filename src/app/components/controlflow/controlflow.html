@@ -1,0 +1,77 @@
+<p>controlflow works!</p>
+<table>
+    <tr>
+        <td>
+            @if (istextvisible == false) {
+                
+            <p>my name is asika chidubem</p>
+            }
+            @else {
+                
+                <p>nothing to see here</p>
+            }
+        </td>
+        <td>
+            <button  (click)="showT()">show T</button>
+        </td>
+        <td>
+            <button (click)="hideT()">Hide T</button>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @if (month == 'jan') {
+            <span>January</span>
+            } 
+            @else if (month == 'feb') {
+                <span>February</span>
+            }
+            @else if (month == 'mar') {
+                <span>March</span>
+            }
+            @else {
+                <span>wrong input</span>
+            }
+
+        </td>
+        <td>
+            <input type="text" [(ngModel)]="month">
+        </td>
+    </tr>
+    <tr>
+        <ul>
+            @for (item of cityList; track $index) {
+                <li>{{item}}</li>
+            }
+        </ul>
+    </tr>
+</table>
+
+<br>
+<table>
+    <thead>
+        <tr>
+            <th>s/no</th>
+            <th>name</th>
+            <th>city</th>
+            <th>status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (item of stdList; track $index) {
+        <tr>
+            <td>{{$index + 1}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.city}}</td>
+            <td>
+                @if (item.isActive == true) {
+                    <h6>Active</h6>
+                }
+                @else {
+                    <h6>Inactive</h6>
+                }
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

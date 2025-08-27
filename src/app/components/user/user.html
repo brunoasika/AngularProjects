@@ -1,0 +1,102 @@
+<div class="row">
+    <div class="col-7">
+        <div class="card">
+            <div class="card-header bg-success">
+                User List
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>userId</th>
+                            <th>emailId</th>
+                            <th>password</th>
+                            <th>fullName</th>
+                            <th>mobileNo</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (item of userList; track $index) {
+                            <tr>
+                                <td>{{$index+1}}</td>
+                                <td>{{item.emailId}}</td>
+                                <td>{{item.password}}</td>
+                                <td>{{item.fullName}}</td>
+                                <td>{{item.mobileNo}}</td>
+                                <td>
+                                    <button class="btn btn-primary" (click)="onEdit(item)">edit</button>
+                                    <button class="btn btn-danger" (click)="onDelete(item.userId)">delete</button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-5">
+        <div class="card">
+            <div class="card-header bg-success">
+                New user
+            </div>
+            <div class="card-body">
+                <form #formValue="ngForm">
+                <div class="row">
+                    <div class="col-6">
+                        <label for="">Email</label>
+                        <!-- template form validation-->
+                        <input type="text" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" #email="ngModel" required [(ngModel)]="userobj.emailId" name="emailId" class="form-control">
+                        @if (email.touched) {
+                        <div class="text-danger">
+                            @if (email.errors?.['required']) {
+                            <span> This is Required </span>
+                            }
+                            @if (email.errors?.['pattern']) {
+                            <span> Pattern not correct </span>
+                            }
+                        </div>
+                    }
+                    </div>
+                    <div class="col-6">
+                        <label for="">Password</label>
+                        <input type="text" #pass="ngModel" required minlength="4" [(ngModel)]="userobj.password" name="password" class="form-control">
+                        <div class="text-danger">
+                            @if (pass.errors?.['required']) {
+                                <span> This is required </span>
+                            }
+                            @if (pass.errors?.['minlength']) {
+                                <span> Min length is 4 characters </span>
+                            }
+                            
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <label for="">FullName</label>
+                        <input type="text" [(ngModel)]="userobj.fullName" name="fullName" class="form-control">
+                    </div>
+                    <div class="col-6">
+                        <label for="">Mobile No</label>
+                        <input type="text" [(ngModel)]="userobj.mobileNo" name="mobileNo" class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 pt-3 text-center" >
+                        <button class="btn btn-secondary" (click)="onReset()">Reset</button>
+                    </div>
+                    <div class="col-6 pt-3 text-center">
+                        formvalue => {{formValue.invalid}}
+                        @if (userobj.userId == 0) {
+                            <button class="btn btn-success" [disabled]="formValue.invalid" (click)="onSaveUser()">Save</button>
+                        }
+                        @else {
+                            <button class="btn btn-warning" (click)="onUpdateUser()">Update</button>
+                        }
+                        
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

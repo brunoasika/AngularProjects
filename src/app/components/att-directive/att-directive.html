@@ -1,0 +1,63 @@
+<div class="row">
+    <div class="col-3">
+        <div class="p-3" [ngClass]="divclassname()">
+            Div 1 - {{divclassname()}}
+        </div>
+    </div>
+    <div class="col-3" [ngStyle]="{'background-color' : isdiv2active == true ? 'Green': 'Red'}">
+        div2 
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-3">
+        <button class="btn btn-success" (click)="setbgclass('bg-success')">Green</button>
+        <button class="btn btn-danger" (click)="setbgclass('bg-danger')">Red</button>
+    </div>
+    <div class="col-3">
+        <button (click)="changediv2color()">change div2 color</button>
+    </div>
+</div>
+<!-- using pipes -->
+<div class="row">
+    <div class="col-3">
+        <div>
+            name = {{firstname}}
+            <br>
+            {{firstname | uppercase}}
+        </div>
+        <div>
+            course = {{courseStudied}}
+            <br>
+            {{courseStudied | lowercase}}
+        </div>
+        <div>
+            course = {{courseStudied}}
+            <br>
+            {{courseStudied | titlecase}}
+        </div>
+        <div>
+            numbers = {{arrayList}}
+            <br>
+            {{arrayList | slice:0:3}}
+            <br>
+            {{arrayList | slice:5}}
+        </div>
+        <div>
+            object_details = {{stdobj}}
+            <br>
+            {{stdobj | json}}
+        </div>
+        <div>
+            date = {{currdate}}
+            <br>
+            {{currdate | date}}
+            <br>
+            {{currdate | date: "dd-MM-yy"}} <!--short version with month in numbers and last 2 digits of the year-->
+            <br>
+            {{currdate | date: "dd-MMM-yyyy"}} <!--first 3 letters of month and full year-->
+            <br>
+            {{currdate | date: "dd-MMMM-yy"}} <!-- full month-->
+        </div>
+    </div>
+</div>
